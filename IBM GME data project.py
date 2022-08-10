@@ -1,4 +1,4 @@
-#question 1
+
 import yfinance as yf
 import pandas as pd
 import requests
@@ -52,13 +52,11 @@ tesla_revenue = tesla_revenue[tesla_revenue['Revenue'].astype(bool)]
 
 
 print(tesla_revenue.tail())
-# question 3
 
 gme = yf.Ticker('GME')
 gme_data = gme.history(period='max')
 gme_data.reset_index(inplace=True)
 print(gme_data.head())
-#question 4
 url = 'https://www.macrotrends.net/stocks/charts/GME/gamestop/revenue'
 html_data = requests.get(url).text
 
@@ -81,10 +79,7 @@ for table in soup.find_all('table'):
 
                 gme_revenue = gme_revenue.append({"Date":date, "Revenue":revenue}, ignore_index=True)
 print(gme_revenue.tail())
-#question 5
 make_graph(tesla_data[['Date','Close']], tesla_revenue, 'Tesla')
-
-#question 6
 
 make_graph(gme_data[['Date','Close']], gme_revenue, 'GameStop')
 
